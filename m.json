@@ -1,0 +1,151 @@
+[
+  {
+    "rule":"q1",
+    "left": {"op": "and" , "arg": [
+                                    {"op": "==", "arg": ["solution" , 0]},
+                                    {"op": "==", "arg": ["skol" , 0]}
+                                  ]},
+    "right":{"op": "set", "arg": ["skol",{"op": "yes_or_no", "arg": "Скололся зуб?"}]}
+
+  },
+  {
+    "rule":"q2",
+    "left": {"op": "and" , "arg": [
+                                    {"op": "==", "arg": ["solution" , 0]},
+                                    {"op": "==", "arg": ["gnoy" , 0]}
+                                  ]},
+    "right":{"op": "set", "arg": ["gnoy",{"op": "yes_or_no", "arg": "Есть выделение гноя?"}]}
+
+  },
+
+  {
+    "rule":"a1",
+    "left": {"op": "and" , "arg": [
+                                    {"op": "==", "arg": ["solution" , 0]},
+                                    {"op": "==", "arg": ["skol" , "нет"]},
+                                    {"op": "==", "arg": ["gnoy" , "да"]}
+                                  ]},
+    "right":{"op": "set", "arg": ["a1", {"op": "found", "arg": ["zapah", "да"]}]}
+
+  }
+  ,
+  {
+    "rule":"q3",
+    "left": {"op": "and" , "arg": [
+                                    {"op": "==", "arg": ["solution" , 0]},
+                                    {"op": "==", "arg": ["temp" , 0]}
+                                  ]},
+    "right":{"op": "set", "arg": ["temp",{"op": "yes_or_no", "arg": "Температура больше 37?"}]}
+
+  },
+  {
+    "rule":"q4",
+    "left": {"op": "and" , "arg": [
+                                    {"op": "==", "arg": ["solution" , 0]},
+                                    {"op": "==", "arg": ["bol" , 0]}
+                                  ]},
+    "right":{"op": "set", "arg": ["bol",{"op": "yes_or_no", "arg": "Острая зубная боль?"}]}
+  },
+ 
+ {
+    "rule":"a2",
+    "left": {"op": "and" , "arg": [
+                                    {"op": "==", "arg": ["solution" , 0]},
+									{"op": "==", "arg": ["temp" , "да"]},
+									{"op": "==", "arg": ["bol" , "да"]},
+                                    {"op": "==", "arg": ["zapah", "да"]}
+                                  ]},
+    "right":{"op": "set", "arg": ["a2", {"op": "found", "arg": ["svish", "да"]}]}
+  }
+  ,
+  
+  {
+    "rule":"a3",
+    "left": {"op": "and" , "arg": [
+                                    {"op": "==", "arg": ["solution" , 0]},
+                                    {"op": "==", "arg": ["svish", "да"]}
+                                  ]},
+    "right":{"op": "set", "arg": ["a3", {"op": "found", "arg": ["solution", 1]},
+										{"op": "print", "arg": "Срочно обратитесь к врачу"}]}
+  }
+  ,
+  
+    {
+    "rule":"q5",
+    "left": {"op": "and" , "arg": [
+                                    {"op": "==", "arg": ["solution" , 0]},
+                                    {"op": "==", "arg": ["otsutstvuey_zyb" , 0]}
+                                  ]},
+    "right":{"op": "set", "arg": ["otsutstvuey_zyb",{"op": "yes_or_no", "arg": "Отсутствует зуб?"}]}
+  },
+
+  
+    
+  
+    {
+    "rule":"q6",
+    "left": {"op": "and" , "arg": [
+                                    {"op": "==", "arg": ["solution" , 0]},
+                                    {"op": "==", "arg": ["zyb_mydrosti" , 0]}
+                                  ]},
+    "right":{"op": "set", "arg": ["zyb_mydrosti",{"op": "yes_or_no", "arg": "Беспокоят зубы мудрости?"}]}
+
+  },
+    {
+    "rule":"a4",
+    "left": {"op": "or" , "arg": [
+                                    {"op": "==", "arg": ["solution" , 0]},
+                                    {"op": "==", "arg": ["otsutstvuey_zyb", "нет"]},
+									{"op": "==", "arg": ["zyb_mydrosti", "нет"]}
+                                  ]},
+    "right":{"op": "set", "arg": ["a4",{"op": "found", "arg": ["vospalenie", "нет"]}]}
+  }
+  ,
+  
+    {
+    "rule":"q7",
+    "left": {"op": "and" , "arg": [
+                                    {"op": "==", "arg": ["solution" , 0]},
+                                    {"op": "==", "arg": ["chuvstvitelnost" , 0]}
+                                  ]},
+    "right":{"op": "set", "arg": ["chuvstvitelnost",{"op": "yes_or_no", "arg": "Повышеная чувствительность?"}]}
+
+  },
+    {
+    "rule":"q8",
+    "left": {"op": "and" , "arg": [
+                                    {"op": "==", "arg": ["solution" , 0]},
+                                    {"op": "==", "arg": ["yazva" , 0]}
+                                  ]},
+    "right":{"op": "set", "arg": ["yazva",{"op": "yes_or_no", "arg": "Язва во рту?"}]}
+
+  },
+    {
+    "rule":"a5",
+    "left": {"op": "or" , "arg": [
+                                    {"op": "==", "arg": ["solution" , 0]},
+                                    {"op": "==", "arg": ["chuvstvitelnost", "нет"]},
+									{"op": "==", "arg": ["yazva", "нет"]},
+									{"op": "==", "arg": ["temp", 0]}
+                                  ]},
+    "right":{"op": "set", "arg": ["a5",{"op": "found", "arg": ["temp", "нет"]}]}
+  },
+   {
+    "rule":"a6",
+    "left": {"op": "and" , "arg": [
+                                    {"op": "==", "arg": ["solution" , 0]},
+                                    {"op": "==", "arg": ["vospalenie", "нет"]},
+									{"op": "==", "arg": ["temp", "нет"]}
+                                  ]},
+    "right":{"op": "set", "arg": ["a6",{"op": "found", "arg": ["svish", "нет"]}]}
+  },
+   {
+    "rule":"a7",
+    "left": {"op": "and" , "arg": [
+                                    {"op": "==", "arg": ["solution" , 0]},
+                                    {"op": "==", "arg": ["svish", "нет"]}
+                                  ]},
+    "right":{"op": "set", "arg": ["a7",{"op": "found", "arg": ["solution", 1]},
+										{"op": "print", "arg": "Осмотр врача не требуется"}]}
+	}
+]
